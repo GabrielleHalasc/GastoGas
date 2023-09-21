@@ -2,7 +2,7 @@
 <img src="https://github.com/GabrielleHalasc/GastoGas/assets/123082926/1646f797-e520-4916-8b84-3e5119deb51e"  width="230"/>
 <img src="https://github.com/GabrielleHalasc/GastoGas/assets/123082926/03743802-3885-4ceb-93b8-b83821bd42ff"  width="230"/>
 <img src="https://github.com/GabrielleHalasc/GastoGas/assets/123082926/d6bae977-6208-44fe-926d-ae83dc45be52"  width="230"/>
-<img src="https://github.com/GabrielleHalasc/GastoGas/assets/123082926/c2a8166c-62e3-4cd0-98ac-337241bca05b"  width="230"/>
+<img src="https://github.com/GabrielleHalasc/GastoGas/assets/123082926/683df741-6418-44a3-9a84-0da894d141ef"  width="230"/>
 <img src="https://github.com/GabrielleHalasc/GastoGas/assets/123082926/0cd346b0-9bf7-4300-8b06-c2cad3d49c16"  width="230"/>
 
 ## Knowledge Stack
