@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="cyan_A200">#18FFFF</color>
+    <color name="cyan_A400">#00E5FF</color>
+    <color name="cyan_A700">#00B8D4</color>
+    <color name="cyan_800">#00838F</color>
+    <color name="BlueDark">#000740</color>
+    <color name="Bluelight">#414b85</color>
+    <color name="Hex">#F50057</color>
+    <color name="Sec_blue">#2B83C2</color>
+
+
+
+</resources>
