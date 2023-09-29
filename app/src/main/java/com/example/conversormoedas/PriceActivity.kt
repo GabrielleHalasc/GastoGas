@@ -21,7 +21,8 @@ class PriceActivity : AppCompatActivity() {
         val imgButton = findViewById<ImageButton>(R.id.imgbtn_voltar1)
 
         imgButton.setOnClickListener(View.OnClickListener {
-            finish()
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
         })
 
 
