@@ -23,6 +23,7 @@
 * FindViewById to recovery UI components
 * SetOnClickListener
 * String Resource
+* Room DataBase
 
 ## Author
 Gabrielle Barao Halasc Frateschi (connect with me on [Linkedln](www.linkedin.com/in/gabriellehalasc))
