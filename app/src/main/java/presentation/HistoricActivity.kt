@@ -1,4 +1,4 @@
-package com.example.conversormoedas
+package presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,25 +6,26 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.ImageButton
-import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import com.example.conversormoedas.HistoricListAdapter
+import com.example.conversormoedas.R
+import data.AppDataBase
+import data.HistoricItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
-import java.io.Serializable
 
 class HistoricActivity : AppCompatActivity() {
 
-    private val dataBase by lazy {
-        Room.databaseBuilder(
-            applicationContext,
-            AppDataBase::class.java, "Historic-database"
-        ).build()
+
+    private val viewModel: HistoricListViewModel by lazy {
+        HistoricListViewModel.create(application)
     }
-    private val dao by lazy { dataBase.HistoricDao() }
     private lateinit var historicList: RecyclerView
     private val adapter = HistoricListAdapter()
 
@@ -46,34 +47,23 @@ class HistoricActivity : AppCompatActivity() {
 
         listFromDataBase()
 
-        adapter.setOnDeleteClickListener {
-            CoroutineScope(IO).launch {
-                dao.deleteById(it.id)
-                listFromDataBase()
-            }
-        }
+       adapter.setOnDeleteClickListener {
+           viewModel.deleteById(it.id)
+       }
 
     }
+    override fun onStart() {
+        super.onStart()
+        listFromDataBase()
+    }
+
 
     private fun listFromDataBase() {
 
-        CoroutineScope(IO).launch {
-
-            val list = dao.getAll()
-            lifecycleScope.launch {
-                adapter.submitList(list)
-            }
-
-        }
-
-    }
-
-    private fun deleteAll() {
-        CoroutineScope(IO).launch {
-            dao.deleteAll()
-            listFromDataBase()
-        }
-
+      val listObserver = Observer<List<HistoricItem>>{
+          adapter.submitList(it)
+      }
+        viewModel.historicListLiveData.observe(this@HistoricActivity, listObserver)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -85,7 +75,7 @@ class HistoricActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_delete_all -> {
-                deleteAll()
+                viewModel.deleteAll()
                 true
             }
 

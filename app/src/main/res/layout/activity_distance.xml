@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BlueDark"
-    tools:context=".DistanceActivity">
+    tools:context="presentation.DistanceActivity">
 
     <View
         android:id="@+id/vw_title"

@@ -1,16 +1,17 @@
-package com.example.conversormoedas
+package presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.room.Room
+import com.example.conversormoedas.R
+import data.AppDataBase
+import data.HistoricItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 class ResultActivity : AppCompatActivity() {
@@ -36,6 +37,8 @@ class ResultActivity : AppCompatActivity() {
         val btnNovoCalculo = findViewById<Button>(R.id.btn_novo_calculo)
         val btnHistorico = findViewById<Button>(R.id.btn_historico)
 
+        val viewModel: ResultActivityViewModel by viewModels()
+
         val preco = intent.getFloatExtra("Extra_Preco", 0.1f)
         val consumo = intent.getFloatExtra("Extra_Consumo", 0.1f)
         val distancia = intent.getFloatExtra("Extra_Distancia", 0.1f)
@@ -44,11 +47,11 @@ class ResultActivity : AppCompatActivity() {
         txtConsumo.text = consumo.toString()
         txtDistancia.text = distancia.toString()
 
-        val resultado = (distancia / consumo) * preco
+        val result: Float = viewModel.gasto(distancia, consumo, preco)
 
-        txtResult.text = "$$resultado"
+        txtResult.text = "$$result"
 
-        val item = HistoricItem(preco = preco, gasto = resultado, distancia = distancia)
+        val item = HistoricItem(preco = preco, gasto = result, distancia = distancia)
         CoroutineScope(Dispatchers.IO).launch {
             dao.insert(item)
         }

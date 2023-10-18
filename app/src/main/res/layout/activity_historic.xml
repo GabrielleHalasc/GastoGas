@@ -20,16 +20,16 @@
             android:id="@+id/imgbtn_voltar4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_voltar"
             android:background="?attr/selectableItemBackground"
             android:padding="8dp"
+            android:src="@drawable/ic_voltar"
             app:tint="@color/white" />
 
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Historico"
+            android:text="@string/hist_rico"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:textSize="24sp"

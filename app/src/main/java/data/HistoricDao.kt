@@ -1,10 +1,11 @@
-package com.example.conversormoedas
+package data
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import data.HistoricItem
 
 
 @Dao
@@ -14,7 +15,7 @@ interface HistoricDao {
     fun insert(item: HistoricItem)
 
     @Query("Select * from HistoricItem")
-    fun getAll(): List<HistoricItem>
+    fun getAll(): LiveData<List<HistoricItem>>
 
     @Query("Delete from HistoricItem")
     fun deleteAll()

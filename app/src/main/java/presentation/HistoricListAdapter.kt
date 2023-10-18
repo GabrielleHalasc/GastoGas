@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import data.HistoricItem
 
 class HistoricListAdapter(
 ) : RecyclerView.Adapter<HistoricListViewHolder>() {
